@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="knakayama" />
+    <meta name="description" content="Kansai Infra benkyo-kai" />
+    <title>Kansai Infra benkyo-kai</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
+    <script>
+      var hljs = remark.highlighter.engine;
+    </script>
+    <script src="remark.language.js"></script>
+    <script>
+      var slideshow = remark.create({
+          sourceUrl: 'slide.md',
+          highlightStyle: 'monokai',
+          highlightLanguage: 'remark',
+          ratio: '13:7'
+        });
+    </script>
+  </body>
+</html>

@@ -4,11 +4,6 @@
 
 body {
   font-family: 'Droid Serif';
-  background-image: url("images/end-scaled.jpg");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 h1, h2, h3 {
@@ -26,7 +21,11 @@ h1, h2, h3 {
   bottom: 3em;
 }
 
-li p { line-height: 1.25em; }
+li p {
+  line-height: 1.25em;
+  font-weight: 900;
+  font-weight: bold;
+}
 
 .red { color: #fa0000; }
 
@@ -43,7 +42,9 @@ code {
 }
 
 .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-.remark-code-line-highlighted     { background-color: #373832; }
+.remark-code-line-highlighted {
+  background-color: #373832;
+}
 
 .pull-left {
   float: left;
@@ -69,17 +70,6 @@ code {
 }
 
 strong { color: #FF0000; }
-
-.inverse {
-  background: #272822;
-  color: #777872;
-  text-shadow: 0 0 20px #333;
-}
-
-.inverse h1, .inverse h2 {
-  color: #f3f3f3;
-  line-height: 0.8em;
-}
 
 /* Slide-specific styling */
 #slide-inverse .footnote {
@@ -119,4 +109,9 @@ strong { color: #FF0000; }
   position: relative;
   background: #fff;
   z-index: 0;
+}
+
+.slide-python {
+  font-size: 5em;
+  font-weight: bold;
 }

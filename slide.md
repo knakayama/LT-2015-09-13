@@ -5,7 +5,7 @@ class: center, middle
 ---
 # Ansibleを使って
 # さくらのクラウド上に
-# サーバ作れるようにした件
+# サーバ作れるようにしたい件
 ## knakayama
 
 ---
@@ -56,8 +56,8 @@ class: center, middle
 ## 無駄なんでいいです」
 
 ---
-# こういう悲しみの連鎖を
-# 止めたい
+# こういう悲しみの
+# 連鎖を止めたい
 
 ---
 # なぜAWSは強いのか
@@ -70,9 +70,9 @@ class: center, middle
 # エコサイクルがある
 
 ---
-# いろんな企業/コミュニティ
-# がAWS対応のツールを
-# **勝手に** 作ってくれる
+# 多くの企業/コミュニティが
+# AWS対応のツールを
+# 勝手に作ってくれる
 
 ---
 # vagrant/packer/terraform
@@ -85,9 +85,9 @@ class: center, middle
 
 ---
 # じゃあ最近良く使っている
-# Ansibleでさくらのクラウド上
-# にサーバ作れる
-# ツール実装してみよう
+# Ansibleでさくらのクラウドに
+# サーバ作れるツールが
+# あったら便利では
 
 ---
 # なので作ってみた
@@ -99,16 +99,17 @@ class: center, middle
 # どんなツールなのか
 
 ---
-# Ansibleでさくらのクラウド
-# 上にサーバ作れます
+# Ansibleで
+# さくらのクラウドに
+# サーバ作れる
 
 ---
 # 何が嬉しいのか
 
 ---
 # APIの知識無くても
-# コマンドラインから
-# サーバ作れます
+# プログラマブルに
+# サーバ作れる
 
 ---
 # 他の利点は？
@@ -116,14 +117,83 @@ class: center, middle
 ---
 # ブートストラップから
 # オーケストレーションまで
-# コマンド一発で
-# 完結できます
+# インフラの状態を
+# コードとして表現できる
+
+---
+# Still in heavily development!!!111
+
+---
+# 冪等性が
+# ガバガバ
+
+---
+# 素人には
+# おすすめできない
 
 ---
 # Demo
 
 ---
+# 参考にしたツール
+
+---
+# [vagrant-sakura](https://github.com/tsahara/vagrant-sakura)
+# [sakurraform](https://github.com/higanworks/sakurraform)
+
+---
 # Ansibleのモジュール開発
+
+---
+# とりあえず公式ドキュメント
+# 読んだ方がいい
+# [Developing Modules](http://docs.ansible.com/ansible/developing_modules.html)
+
+---
+# [core module](https://github.com/ansible/ansible-modules-core)
+# [extra core module](https://github.com/ansible/ansible-modules-extras)
+# Ansibleの公式モジュールを
+# 見ると大体分かる
+
+---
+# 言語はなんでもOK
+
+---
+# ただpythonで作ると
+# いろいろとモジュール
+# 使えて便利
+
+---
+## ansible/lib/ansible/module_utils
+## ↑に便利モジュールある
+
+---
+name: python
+
+```python
+unko
+```
+
+---
+# 本当はリソース毎に
+# (disk/network/server/etc...)
+# モジュール分けたかった
+
+---
+## sacloud_disk.py
+## sacloud_server.py
+## sacloud_network.py
+## etc...
+
+---
+# site_facts 使うと
+# できるっぽい
+
+---
+```code
+A good idea might be make a module called ‘site_facts’ and always call it at the top of each playbook, though
+we’re always open to improving the selection of core facts in Ansible as well.
+```
 
 ---
 # プルリク募集中です！

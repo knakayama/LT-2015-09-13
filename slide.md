@@ -5,7 +5,7 @@ class: center, middle
 ---
 # Ansibleを使って
 # さくらのクラウド上に
-# サーバ作れるようにしたい件
+# サーバ作れるようにした~~い~~件
 ## knakayama
 
 ---
@@ -14,6 +14,7 @@ class: center, middle
 ---
 # 中山 幸治
 # [knakayama](https://github.com/knakayama)
+![knakayama](images/knakayama.png)
 
 ---
 # さくらインターネットで
@@ -21,13 +22,24 @@ class: center, middle
 # 運用を担当
 
 ---
-# ところでさくらのクラウド
+# アジェンダ
+
+---
+# さくらのクラウドの話
+# Ansibleの話
+
+---
+# さくらのクラウド
 # 使ってますか？
 
 ---
-# 心の声が聴こえる
+# 大声援が聞こえる
 
 ---
+# 圧倒的感謝
+
+---
+# ところで
 # こんなこと社内で
 # ないですか？
 
@@ -40,18 +52,27 @@ class: center, middle
 # ありそうな光景
 
 ---
-### 中立的なAさん
+# Aさん
+
+---
 ## 「どのパブリッククラウド使おうかな〜
 ## とりあえずAWS検証してみるか〜」
 
 ---
-### イベントでさくらのクラウド無料チケットもらったBさん
+# イベントで
+# さくらのクラウド
+# 無料チケットもらったBさん
+
+---
 ## 「そういえばさくらのクラウド無料
 ## チケット持ってるのでそれ使って
 ## 検証してみましょうか〜」
 
 ---
-### AWSに毒されてるCさん
+# デファクト厨Cさん
+
+---
+
 ## 「いやそういうの時間の
 ## 無駄なんでいいです」
 
@@ -76,7 +97,8 @@ class: center, middle
 
 ---
 # vagrant/packer/terraform
-# chef/Ansible/puppet
+# Chef/Ansible/Puppet
+# fluentd/logstash
 # etc...
 
 ---
@@ -112,16 +134,21 @@ class: center, middle
 # サーバ作れる
 
 ---
+# YAMLに必要な設定を
+# 記述すればいいだけ
+
+---
 # 他の利点は？
 
 ---
 # ブートストラップから
-# オーケストレーションまで
+# プロビジョニングまで
 # インフラの状態を
 # コードとして表現できる
 
 ---
-# Still in heavily development!!!111
+# under heavy
+# development!!!!
 
 ---
 # 冪等性が
@@ -132,9 +159,6 @@ class: center, middle
 # おすすめできない
 
 ---
-# Demo
-
----
 # 参考にしたツール
 
 ---
@@ -142,61 +166,102 @@ class: center, middle
 # [sakurraform](https://github.com/higanworks/sakurraform)
 
 ---
-# Ansibleのモジュール開発
+# 素直にこっち
+# 使った方がいい
 
 ---
-# とりあえず公式ドキュメント
-# 読んだ方がいい
-# [Developing Modules](http://docs.ansible.com/ansible/developing_modules.html)
+# [Demo](https://github.com/knakayama/ansible-sacloud-demo)
 
 ---
-# [core module](https://github.com/ansible/ansible-modules-core)
-# [extra core module](https://github.com/ansible/ansible-modules-extras)
-# Ansibleの公式モジュールを
-# 見ると大体分かる
+# Ansibleにおける
+# モジュール開発
 
 ---
+# トップディレクトリの
+# `library` 以下に置く
+# [Best Practices](http://docs.ansible.com/ansible/playbooks_best_practices.html)
+
+---
+# JSONでSTDOUTに
+# 出力すれば
 # 言語はなんでもOK
 
 ---
 # ただpythonで作ると
-# いろいろとモジュール
-# 使えて便利
+# 便利モジュールを
+# 利用できる
 
 ---
-## ansible/lib/ansible/module_utils
-## ↑に便利モジュールある
+## `ansible/lib/ansible/module_utils/*`
+## 特に `basic.py` は必須
 
 ---
-name: python
-
-```python
-unko
-```
+# YAMLパースして
+# いい感じに引数を
+# 扱ってくれる
 
 ---
-# 本当はリソース毎に
-# (disk/network/server/etc...)
-# モジュール分けたかった
+## `module = AnsibleModule(argument_spec=dict(...))`
+## `hoge = module.params["hoge"]`
 
 ---
-## sacloud_disk.py
-## sacloud_server.py
-## sacloud_network.py
-## etc...
+# モジュールの成功/失敗を
+# いい感じに出力してくれる
 
 ---
-# site_facts 使うと
-# できるっぽい
+## `module.exit_json(changed=True, msg=msg)`
+## `module.fail_json(msg=msg)`
 
 ---
-```code
-A good idea might be make a module called ‘site_facts’ and always call it at the top of each playbook, though
-we’re always open to improving the selection of core facts in Ansible as well.
-```
+# 冪等性の担保は
+# モジュールの開発者に
+# 責任がある
 
 ---
-# プルリク募集中です！
+# インフラがすでに
+# 「あるべき状態」か
+# 常に確認
+
+---
+# `--check` オプション指定時に
+# インフラが変更されるか
+# 表示することも必要
+
+---
+# `if module.check_mode:`
+
+---
+# モジュールの中で
+# `facts` を追加できるので
+# 後から参照可能
+
+---
+## `module.exit_json(..., ansible_facts=dict(hoge=fuga))`
+## `{{ hoge }}` #=> fuga
+
+---
+# 後は単なる
+# pythonスクリプト
+
+---
+# 実際のコード
+
+---
+# 公式ドキュメント
+# [Developing Modules](http://docs.ansible.com/ansible/developing_modules.html)
+
+---
+# Ansibleの公式モジュール
+# [core module](https://github.com/ansible/ansible-modules-core)
+# [extra core module](https://github.com/ansible/ansible-modules-extras)
+
+---
+# この辺見ておけば
+# 結構簡単に作れる
+
+---
+# 公式モジュールだけでは
+# 物足りない時にぜひどうぞ
 
 ---
 # いろいろとしゃべり
@@ -210,8 +275,8 @@ we’re always open to improving the selection of core facts in Ansible as well.
 # もっと使ってくれ！
 
 ---
-background-image: url(images/end-scaled.jpg)
-ackground-position: center center;
-ackground-size: cover;
-ackground-repeat: no-repeat;
-ackground-attachment: fixed;
+background-image: url(images/end.jpg)
+
+---
+background-image: url(images/end.jpg)
+# **終**

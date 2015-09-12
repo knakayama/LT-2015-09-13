@@ -16,18 +16,7 @@ h1, h2, h3 {
 .remark-slide-content h2 { font-size: 3em; }
 .remark-slide-content h3 { font-size: 2em; }
 
-.footnote {
-  position: absolute;
-  bottom: 3em;
-}
-
-li p {
-  line-height: 1.25em;
-  font-weight: 900;
-  font-weight: bold;
-}
-
-.red { color: #fa0000; }
+.red { color: red; }
 
 .large { font-size: 2em; }
 
@@ -41,7 +30,10 @@ code {
   border-radius: 5px;
 }
 
-.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+.remark-code, .remark-inline-code {
+  font-family: 'Ubuntu Mono';
+}
+
 .remark-code-line-highlighted {
   background-color: #373832;
 }
@@ -69,13 +61,7 @@ code {
   padding: 15px;
 }
 
-strong { color: #FF0000; }
-
-/* Slide-specific styling */
-#slide-inverse .footnote {
-  bottom: 12px;
-  left: 20px;
-}
+strong { color: red; }
 
 #slide-how .slides {
   font-size: 0.9em;
@@ -109,9 +95,4 @@ strong { color: #FF0000; }
   position: relative;
   background: #fff;
   z-index: 0;
-}
-
-.slide-python {
-  font-size: 5em;
-  font-weight: bold;
 }
